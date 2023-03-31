@@ -1,0 +1,20 @@
+bindkey	'\e[H'	beginning-of-line
+bindkey '\e[F'	end-of-line
+bindkey '\e[3~'	delete-char
+
+# enable color for ls output
+export CLICOLOR=1
+
+# add Git info to prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+zstyle ':vcs_info:git:*' formats '(%b) '
+
+setopt PROMPT_SUBST
+
+# customize the prompt
+PROMPT='%F{green}[%*%f %F{magenta}%n@%m%f%F{green}]%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f%% '
+
+# add flutter to PATH
+export PATH="/Users/christomich/opt/flutter/bin:$PATH"
